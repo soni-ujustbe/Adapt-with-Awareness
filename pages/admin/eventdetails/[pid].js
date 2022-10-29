@@ -47,11 +47,12 @@ const Eventdetail = ({ username }) => {
     const [threecheck, setThreeCheck] = useState('');
     const [fourcheck, setFourCheck] = useState('');
     const [fivecheck, setFiveCheck] = useState('');
+    // const [fivecheck, setFiveCheck] = useState();
     const [sixcheck, setSixCheck] = useState('');
-    const [sevencheck, setSevenCheck] = useState('');
-    const [eightcheck, setEightCheck] = useState('');
+     
+    const [oneQuestionInput, setOneQuestionInput] = useState("");
+    const [twoQuestionInput, setTwoQuestionInput] = useState("");
 
- 
   const [error, seterror] = useState(false);
   const [singleUser,setSingleuser]=useState("");
   const [eventId,seteventId]=useState("");
@@ -645,7 +646,7 @@ const Eventdetail = ({ username }) => {
               <th>Question 1</th>
               <th>Question 1 input</th>
               <th>Question 2</th>
-              {/* <th>Question 2 input</th> */}
+              <th>Question 2 input</th>
               <th>Question 3</th>
               {/* <th>Question 3 input</th> */}
               
@@ -675,6 +676,7 @@ const Eventdetail = ({ username }) => {
                     <td>{eventdata.PostOneAns}</td>
                     <td>{eventdata.PostOneInput}</td>
                     <td>{eventdata.PostTwoAns}</td>
+                    <td>{eventdata.PostTwoInput}</td>
                     
                
   
@@ -686,16 +688,22 @@ const Eventdetail = ({ username }) => {
                               
                             </ul>
                           )
-                        
-                            
-                         
                         })}
                      </td>
+                   
                     
                     
                    
                     <td>{eventdata.PostFourAns}</td>
-                    <td>{eventdata.PostFiveAns}</td>
+                    <td>  {eventdata.PostFiveAns && eventdata.PostFiveAns.map((fivedata,i)=>{
+                          return(
+                            <ul  key={i} className='checkbox-data'>
+                               {fivedata.isChecked && fivedata.isChecked === true ? <li>{fivedata.name}</li>:null } 
+                              
+                            </ul>
+                          )
+                        })}
+                     </td>
                     
                     <td>{eventdata.PostSixAns}</td>
 
@@ -719,7 +727,7 @@ const Eventdetail = ({ username }) => {
       </section>
 
 
-      <section className='box userlisting'>
+      {/* <section className='box userlisting'>
         <h2>
           Registration Form
         </h2>
@@ -798,7 +806,7 @@ const Eventdetail = ({ username }) => {
             }
           </tbody>
         </table>
-      </section>
+      </section> */}
 
     </Layout>
   );
